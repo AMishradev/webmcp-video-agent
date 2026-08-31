@@ -27,13 +27,13 @@ const runTool = <A>(effect: Effect.Effect<A, Error>) =>
     ),
   );
 
-export const registerVideoTools = (
+export const registerVideoTools = async (
   videos: ReadonlyArray<Video>,
   actions: VideoActions,
 ) => {
   if (document.modelContext === undefined) return false;
 
-  void document.modelContext.registerTool({
+  await document.modelContext.registerTool({
     name: "search_videos",
     description:
       "Search the visible learning-video catalog and highlight matching cards. Use this before choosing a video when the user describes a topic, level, or time limit.",
@@ -80,7 +80,7 @@ export const registerVideoTools = (
       ),
   });
 
-  void document.modelContext.registerTool({
+  await document.modelContext.registerTool({
     name: "play_video",
     description:
       "Load one catalog video in the visible player. Use a videoId returned by search_videos. This changes the page but does not navigate away.",
@@ -102,7 +102,7 @@ export const registerVideoTools = (
       ),
   });
 
-  void document.modelContext.registerTool({
+  await document.modelContext.registerTool({
     name: "add_to_queue",
     description:
       "Add one catalog video to the shared visible learning queue. Duplicate videos are ignored. Use a videoId returned by search_videos.",
@@ -124,7 +124,7 @@ export const registerVideoTools = (
       ),
   });
 
-  void document.modelContext.registerTool({
+  await document.modelContext.registerTool({
     name: "clear_queue",
     description: "Clear every video from the shared visible learning queue.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },

@@ -115,7 +115,7 @@ requiredElement<HTMLButtonElement>("#clear").addEventListener("click", () => {
   renderQueue();
 });
 
-const hasWebMcp = registerVideoTools(catalog, {
+const hasWebMcp = await registerVideoTools(catalog, {
   showMatches: (videos) => {
     visibleIds = new Set(videos.map((video) => video.id));
     renderCatalog();
@@ -126,7 +126,7 @@ const hasWebMcp = registerVideoTools(catalog, {
     queue = [];
     renderQueue();
   },
-});
+}).catch(() => false);
 
 status.textContent = hasWebMcp ? "WebMCP ready" : "WebMCP browser needed";
 status.classList.toggle("ready", hasWebMcp);

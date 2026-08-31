@@ -41,7 +41,7 @@ This shared, inspectable state is difficult to preserve with a traditional backe
 The entire integration is in [`src/webmcp.ts`](src/webmcp.ts). Each tool is registered with `document.modelContext.registerTool(...)`:
 
 ```ts
-void document.modelContext.registerTool({
+await document.modelContext.registerTool({
   name: "search_videos",
   description: "Search the visible learning-video catalog...",
   inputSchema: {

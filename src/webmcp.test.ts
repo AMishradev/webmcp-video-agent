@@ -27,7 +27,7 @@ describe("WebMCP tools", () => {
     });
     const showMatches = vi.fn();
 
-    const registered = registerVideoTools(catalog, {
+    const registered = await registerVideoTools(catalog, {
       showMatches,
       play: vi.fn(),
       enqueue: vi.fn(),
